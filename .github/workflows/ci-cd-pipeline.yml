@@ -36,9 +36,11 @@ jobs:
     needs: build  # Only run this job if the build is successful
 
     steps:
+      # Trigger Jenkins Deployment Job
       - name: Trigger Jenkins Deployment Job
         run: |
-          curl -X POST "http://<jenkins-server>/job/deploy-to-tomcat/buildWithParameters?token=<jenkins-token>&app_name=myApp"
+          curl -u $JENKINS_USER:$JENKINS_API_TOKEN -X POST "http://localhost:8080/job/deploy-to-tomcat-2/buildWithParameters?token=my-deploy-token&app_name=myApp"
         env:
           JENKINS_USER: ${{ secrets.JENKINS_USER }}
           JENKINS_API_TOKEN: ${{ secrets.JENKINS_API_TOKEN }}
+
