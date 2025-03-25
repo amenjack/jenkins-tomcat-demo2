@@ -39,7 +39,9 @@ jobs:
       # Trigger Jenkins Deployment Job
       - name: Trigger Jenkins Deployment Job
         run: |
-          curl -u $JENKINS_USER:$JENKINS_API_TOKEN -X POST "http://localhost:8080/job/deploy-to-tomcat-2/buildWithParameters?token=my-deploy-token&app_name=myApp"
+         curl -u $JENKINS_USER:$JENKINS_API_TOKEN -X POST " https://cd34-109-55-249-75.ngrok-free.app -> http://localhost:8080
+/job/deploy-to-tomcat-2/buildWithParameters?token=my-deploy-token&app_name=myApp"
+
         env:
           JENKINS_USER: ${{ secrets.JENKINS_USER }}
           JENKINS_API_TOKEN: ${{ secrets.JENKINS_API_TOKEN }}
